@@ -6,7 +6,7 @@ Convert any Word document to a professional, double-column academic PDF format w
 
 ```bash
 # Activate your conda environment (with Pandoc and LaTeX)
-conda activate yoloe
+conda activate myenv
 
 # Install Python dependencies 
 conda install -c conda-forge texlive-core pandoc
@@ -127,7 +127,3 @@ The script will:
 ---
 
 **Perfect for academic papers, research documents, and professional reports!**
-
-## Requirements.txt
-
-See the included `requirements.txt` for a list of required packages and installation instructions. 

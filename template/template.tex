@@ -1,0 +1,163 @@
+%%
+% Universal Academic Template for Double-Column Papers
+%%
+
+\documentclass[10pt,twocolumn]{article}
+
+% Essential packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{times}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\usepackage{soul}  % For underline support
+\usepackage{ulem}  % For underline support
+
+% Geometry setup for academic papers
+\geometry{margin=1in,top=1in,bottom=1in,left=1in,right=1in}
+
+% Line spacing
+\setstretch{1.0}
+
+% Standard hyphenation penalties (minimal hyphenation)
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\tolerance=1000
+\emergencystretch=3em
+
+% Text formatting
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+
+% Image spacing - add space before and after images
+\setlength{\floatsep}{12pt}
+\setlength{\textfloatsep}{12pt}
+\setlength{\intextsep}{12pt}
+\setlength{\abovecaptionskip}{12pt}
+\setlength{\belowcaptionskip}{12pt}
+
+% Hyperref setup
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  breaklinks=true,
+  pdfcreator={LaTeX via pandoc with Academic Template}
+}
+
+% Graphics setup for single-column images
+\makeatletter
+\def\maxwidth{\columnwidth}
+\def\maxheight{\textheight}
+\makeatother
+
+% Set graphics defaults
+\setkeys{Gin}{
+  width=\maxwidth,
+  height=\maxheight,
+  keepaspectratio
+}
+
+% Better figure placement for two-column layout
+\makeatletter
+\def\fps@figure{htbp}
+\def\fps@table{htbp}
+\makeatother
+
+% Force figures to stay within column boundaries
+\renewcommand{\floatplacement}{htbp}
+
+% Fix for Word formatting issues
+\providecommand{\ul}[1]{\underline{#1}}  % Handle Word underlines
+\providecommand{\st}[1]{\sout{#1}}       % Handle Word strikethrough
+
+% Tight list formatting
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Section numbering
+\setcounter{secnumdepth}{0}
+
+% Title
+$if(title)$
+\title{$title$}
+$else$
+\title{Document Title}
+$endif$
+
+
+\begin{document}
+
+% Title
+\maketitle
+
+% Abstract
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+% Keywords
+$if(keywords)$
+\noindent\textbf{Keywords:} $for(keywords)$$keywords$$sep$, $endfor$
+$endif$
+
+% Main content
+$for(include-before)$
+$include-before$
+$endfor$
+
+$if(toc)$
+\tableofcontents
+$endif$
+
+$if(lot)$
+\listoftables
+$endif$
+
+$if(lof)$
+\listoffigures
+$endif$
+
+% Main body
+$body$
+
+% Bibliography
+$if(natbib)$
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+$endif$
+
+$if(biblatex)$
+\printbibliography
+$endif$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+\end{document} 
